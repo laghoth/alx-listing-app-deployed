@@ -6,7 +6,13 @@
 
 // export default OrderSummary;
 import Image from "next/image";
-
+interface BookingDetails {
+  propertyName: string;
+  startDate: string;
+  totalNights: number;
+  bookingFee: number;
+  price: number;
+}
 const OrderSummary: React.FC<{ bookingDetails: any }> = ({
   bookingDetails,
 }) => (
