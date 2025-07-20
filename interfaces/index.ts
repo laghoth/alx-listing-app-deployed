@@ -10,12 +10,6 @@ export interface Offers {
   occupants: string;
 }
 
-export interface ButtonProps {
-  label: string;
-  onClick: () => void;
-  type?: "button" | "submit" | "reset";
-}
-
 export interface PropertyProps {
   name: string;
   address: Address;

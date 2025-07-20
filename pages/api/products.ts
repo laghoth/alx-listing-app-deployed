@@ -14,33 +14,30 @@ export default async function handler(
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
 
-    // const response = await axios.get(
-    //   "https://apidojo-booking-v1.p.rapidapi.com/properties/list-by-map",
-    //   {
-    //     params: {
-    //       room_qty: 1,
-    //       guest_qty: 1,
-    //       bbox: "14.291283,14.948423,120.755688,121.136864",
-    //       search_id: "none",
-    //       children_age: "11,5",
-    //       price_filter_currencycode: "USD",
-    //       categories_filter: "class::1,class::2,class::3",
-    //       languagecode: "en-us",
-    //       travel_purpose: "leisure",
-    //       children_qty: 2,
-    //       order_by: "popularity",
-    //       offset: 0,
-    //       arrival_date: formatDate(today), // <-- always today
-    //       departure_date: formatDate(tomorrow), // <-- always tomorrow
-    //     },
-    //     headers: {
-    //       "x-rapidapi-key": process.env.RAPIDAPI_KEY || "",
-    //       "x-rapidapi-host": "apidojo-booking-v1.p.rapidapi.com",
-    //     },
-    //   }
-    // );
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/properties`
+      "https://apidojo-booking-v1.p.rapidapi.com/properties/list-by-map",
+      {
+        params: {
+          room_qty: 1,
+          guest_qty: 1,
+          bbox: "14.291283,14.948423,120.755688,121.136864",
+          search_id: "none",
+          children_age: "11,5",
+          price_filter_currencycode: "USD",
+          categories_filter: "class::1,class::2,class::3",
+          languagecode: "en-us",
+          travel_purpose: "leisure",
+          children_qty: 2,
+          order_by: "popularity",
+          offset: 0,
+          arrival_date: formatDate(today), // <-- always today
+          departure_date: formatDate(tomorrow), // <-- always tomorrow
+        },
+        headers: {
+          "x-rapidapi-key": process.env.RAPIDAPI_KEY || "",
+          "x-rapidapi-host": "apidojo-booking-v1.p.rapidapi.com",
+        },
+      }
     );
     res.status(200).json(response.data);
   } catch (error: any) {
